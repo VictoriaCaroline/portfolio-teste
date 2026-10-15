@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victória Sarti — Psicologia e Dados</title>
+  <meta name="description" content="Psicóloga que trabalha com dados: People Analytics, Power Platform, Azure, SQL e Python. Dourados, MS.">
+  <meta name="author" content="Victória Caroline Sarti José">
+  <meta name="theme-color" content="#FAFAF7">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --soft: #F1F0EB;
+      --ink: #111317;
+      --text: #33373E;
+      --muted: #6E737C;
+      --line: #E5E3DD;
+      --accent: #B4532A;
+
+      --display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --wrap: 1120px;
+      --gut: clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
+    .label { font-family: var(--mono); font-size: .72rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+
+    /* header */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(250,250,247,.88); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+    header.scrolled { border-color: var(--line); }
+    .hdr { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-family: var(--display); font-weight: 600; color: var(--ink); }
+    nav { display: flex; gap: 1.8rem; }
+    nav a { font-size: .875rem; color: var(--muted); transition: color .15s; }
+    nav a:hover { color: var(--ink); }
+
+    /* hero */
+    .hero { padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 5rem); }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+    h1 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1; letter-spacing: -.035em; margin: .9rem 0 1.4rem; }
+    .intro { font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.55; color: var(--text); max-width: 36ch; }
+    .intro span { color: var(--muted); }
+    .links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 2rem; }
+    .links a { font-size: .9rem; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color .15s; }
+    .links a:hover { border-color: var(--ink); }
+    .photo { width: clamp(180px, 22vw, 280px); aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: var(--soft); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+    /* projetos */
+    #projetos { padding-bottom: clamp(3rem, 7vw, 6rem); }
+    .sec-title { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1.15rem; letter-spacing: -.01em; }
+
+    .proj { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; margin-bottom: clamp(3.5rem, 8vw, 6.5rem); }
+    .proj.flip { grid-template-columns: 1fr 1.55fr; }
+    .proj.flip .media-col { order: 2; }
+    .media { position: relative; border-radius: 12px; overflow: hidden; background: #15181d; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(17,19,23,.04), 0 24px 48px -24px rgba(17,19,23,.28); cursor: zoom-in; }
+    .media img, .media video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; transition: transform .4s ease; }
+    .media:hover img, .media:hover video { transform: scale(1.015); }
+    .thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .75rem; }
+    .caption { font-size: .78rem; color: var(--muted); margin-top: .6rem; }
+
+    .proj h3 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: clamp(1.5rem, 2.4vw, 1.9rem); letter-spacing: -.02em; line-height: 1.15; margin: .6rem 0 .8rem; }
+    .proj p { color: var(--muted); max-width: 40ch; }
+    .insight { margin-top: 1.2rem; padding-left: .9rem; border-left: 2px solid var(--accent); color: var(--text) !important; font-size: .95rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.4rem; }
+    .tag { font-size: .78rem; color: var(--text); background: var(--soft); border-radius: 6px; padding: .2rem .55rem; }
+
+    .more { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .mini { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .mini.solo { grid-template-columns: 1fr; }
+    .mini img { width: 140px; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; cursor: zoom-in; }
+    .mini h4 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1rem; }
+    .mini p { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+    .mini .links { margin-top: .5rem; gap: .9rem; }
+    .mini .links a { font-size: .82rem; }
+
+    /* sobre */
+    #sobre { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
+    .about h3 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1.3rem; letter-spacing: -.015em; margin: .5rem 0 .7rem; }
+    .about p { color: var(--muted); max-width: 46ch; }
+    .tools { margin-top: clamp(2.5rem, 5vw, 3.5rem); padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: .4rem .6rem; align-items: center; }
+    .tools .label { margin-right: .6rem; }
+
+    /* trajetória */
+    #trajetoria { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .tl-row { display: grid; grid-template-columns: 160px 1fr auto; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+    .tl-row h4 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1.05rem; }
+    .tl-row p { font-size: .9rem; color: var(--muted); }
+    .tl-btns { display: flex; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; }
+    .link-btn { background: none; border: 1px solid var(--line); border-radius: 8px; padding: .3rem .7rem; font-size: .8rem; color: var(--text); cursor: pointer; white-space: nowrap; }
+    .link-btn:hover { border-color: var(--ink); }
+
+    /* contato */
+    #contato { background: var(--ink); color: #C6CAD0; padding: clamp(3.5rem, 8vw, 5.5rem) 0 2rem; }
+    .ct { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+    .ct h2 { color: #fff; font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -.025em; line-height: 1.1; }
+    .ct .links { margin-top: 0; }
+    .ct .links a { color: #fff; border-color: #3A3F47; }
+    .ct .links a:hover { border-color: #fff; }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid #262A31; font-size: .78rem; color: #7A808A; }
+
+    .rv { opacity: 0; transform: translateY(12px); transition: opacity .55s ease, transform .55s ease; }
+    .rv.in { opacity: 1; transform: none; }
+
+    /* modais */
+    .overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(10,12,15,.8); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 1rem; }
+    .overlay.on { display: flex; }
+    .modal { background: var(--surface); border-radius: 14px; padding: 1.2rem; width: min(92vw, 820px); max-height: 92vh; overflow: hidden; }
+    .modal.wide { width: min(96vw, 1180px); }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .modal-ttl { font-family: var(--display); font-weight: 600; color: var(--ink); }
+    .modal-x { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 1.1rem; color: var(--muted); }
+    .car-wrap { display: flex; align-items: center; gap: .5rem; }
+    .car-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; width: 100%; border-radius: 10px; scrollbar-width: none; }
+    .car-track::-webkit-scrollbar { display: none; }
+    .car-slide { min-width: 100%; scroll-snap-align: start; }
+    .car-slide img { width: 100%; height: clamp(200px, 34vw, 420px); object-fit: cover; border-radius: 10px; }
+    .img-contain { height: auto !important; max-height: 74vh; object-fit: contain !important; background: var(--soft); }
+    .car-cap { text-align: center; font-size: .82rem; color: var(--muted); margin-top: .6rem; }
+    .car-btn { width: 34px; height: 34px; flex-shrink: 0; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 1.2rem; }
+    .dots { display: flex; justify-content: center; gap: 6px; margin-top: .8rem; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); cursor: pointer; }
+    .dot.on { background: var(--accent); }
+    .pdf-wrap { height: calc(92vh - 130px); min-height: 320px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+    .pdf-wrap iframe { width: 100%; height: 100%; border: 0; }
+    .pdf-btn { display: inline-block; margin-top: .8rem; font-size: .85rem; color: var(--accent); }
+    .lb { display: none; position: fixed; inset: 0; z-index: 120; background: rgba(10,12,15,.94); align-items: center; justify-content: center; padding: 1rem; }
+    .lb.on { display: flex; }
+    .lb-box { position: relative; max-width: min(94vw, 1400px); }
+    .lb-box img { max-height: 86vh; width: auto; max-width: 100%; border-radius: 10px; }
+    #vid-el { width: min(94vw, 1200px); max-height: 86vh; border-radius: 10px; }
+    .lb-close { position: absolute; top: -14px; right: -14px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: #fff; cursor: pointer; }
+    .lb-cap { color: #A3A9B2; font-size: .8rem; text-align: center; margin-top: .5rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .photo { order: -1; width: 128px; border-radius: 50%; aspect-ratio: 1; }
+      .proj, .proj.flip { grid-template-columns: 1fr; }
+      .proj.flip .media-col { order: 0; }
+      .more, .about { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav { gap: 1.1rem; }
+      .mini { grid-template-columns: 1fr; }
+      .mini img { width: 100%; }
+      .tl-row { grid-template-columns: 1fr; gap: .3rem; }
+      .tl-btns { justify-content: flex-start; margin-top: .4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+      .rv { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a href="#" class="brand">Victória Sarti</a>
+    <nav>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" aria-label="Apresentação">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label">Psicologia · Dados</span>
+      <h1>Victória Sarti</h1>
+      <p class="intro">Psicóloga que trabalha com dados. <span>Uso a análise para entender pessoas e construo as ferramentas que tornam isso possível.</span></p>
+      <div class="links">
+        <a href="#projetos">Ver projetos ↓</a>
+        <a href="https://www.linkedin.com/in/victoria-sarti/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="photo"><img src="vic.png" alt="Foto de Victória Sarti"></div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="sec-title"><h2>Projetos</h2><span class="label">2025 — 2026</span></div>
+
+    <article class="proj rv">
+      <div class="media-col">
+        <div class="media" role="button" tabindex="0" aria-label="Ampliar vídeo" onclick="openVid()">
+          <video autoplay muted loop playsinline preload="metadata"><source src="vicvid.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div>
+        <span class="label">01 · Business case</span>
+        <h3>Power BI integrado ao Power Apps</h3>
+        <p>Um caso de negócio de ponta a ponta: o app captura o dado, o relatório responde à pergunta.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">Power Apps</span><span class="tag">DAX</span><span class="tag">Power Platform</span></div>
+      </div>
+    </article>
+
+    <article class="proj flip rv">
+      <div class="media-col">
+        <div class="media" role="button" tabindex="0" onclick="openLbSrc('assets/proj-doma-resumo.jpg','Doma&RH — resumo e evolução do quadro')">
+          <img src="assets/proj-doma-resumo.jpg" alt="Doma&RH — resumo e evolução do quadro" loading="lazy">
+        </div>
+        <div class="thumbs">
+          <div class="media" role="button" tabindex="0" onclick="openLbSrc('assets/proj-doma-jornada.jpg','Doma&RH — intra e interjornada')">
+            <img src="assets/proj-doma-jornada.jpg" alt="Doma&RH — intra e interjornada" loading="lazy">
+          </div>
+          <div class="media" role="button" tabindex="0" onclick="openLbSrc('assets/proj-doma-venc.jpg','Doma&RH — vencimentos de experiência, ASO e CNH')">
+            <img src="assets/proj-doma-venc.jpg" alt="Doma&RH — vencimentos" loading="lazy">
+          </div>
+        </div>
+        <p class="caption">Imagens com dados fictícios.</p>
+      </div>
+      <div>
+        <span class="label">02 · People Analytics</span>
+        <h3>Doma&amp;RH</h3>
+        <p>Headcount, turnover, demografia, vencimentos e jornada num só lugar, da importação da planilha ao indicador.</p>
+        <p class="insight">Ao limpar a base, o absenteísmo caiu de 6,09% para 3,88%: parte das faltas era de quem nem batia ponto.</p>
+        <div class="tags"><span class="tag">Azure</span><span class="tag">SQL</span><span class="tag">Python · pandas</span><span class="tag">JavaScript</span><span class="tag">LGPD</span></div>
+      </div>
+    </article>
+
+    <article class="proj rv">
+      <div class="media-col">
+        <div class="media" role="button" tabindex="0" onclick="openLbSrc('assets/proj-epi.jpg','Portal de EPI e Uniformes')">
+          <img src="assets/proj-epi.jpg" alt="Portal de EPI e Uniformes" loading="lazy">
+        </div>
+        <p class="caption">Imagem com dados fictícios.</p>
+      </div>
+      <div>
+        <span class="label">03 · Aplicação web</span>
+        <h3>Portal de EPI e Uniformes</h3>
+        <p>Entregas com assinatura do colaborador pelo celular, estoque, validade de CA e trilha de auditoria.</p>
+        <div class="tags"><span class="tag">Azure Static Web Apps</span><span class="tag">Azure Functions</span><span class="tag">Table Storage</span><span class="tag">JavaScript</span></div>
+      </div>
+    </article>
+
+    <div class="more rv">
+      <div class="mini">
+        <img src="./totvs.importador.jpg" alt="TOTVS Protheus — importador de dados" loading="lazy" onclick="openLb(this)">
+        <div>
+          <span class="label">04 · ERP</span>
+          <h4>Importador para o TOTVS Protheus</h4>
+          <p>Carga validada em AdvPL e SQL, sem digitação manual.</p>
+        </div>
+      </div>
+      <div class="mini solo">
+        <div>
+          <span class="label">Outros</span>
+          <h4>Web e criação</h4>
+          <div class="links">
+            <a href="https://orange-ocean-07cb72f10.7.azurestaticapps.net/" target="_blank" rel="noopener">Website ↗</a>
+            <a href="https://agreeable-forest-092c02110.7.azurestaticapps.net/" target="_blank" rel="noopener">Linktree ↗</a>
+            <a href="https://ambitious-pebble-045775e10.7.azurestaticapps.net/" target="_blank" rel="noopener">Catálogo 3D ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="sec-title"><h2>Sobre</h2></div>
+    <div class="about rv">
+      <div>
+        <span class="label">Psicologia</span>
+        <h3>Entender antes de medir</h3>
+        <p>Minha formação é em Psicologia, com abordagem fenomenológico-existencial. Ela me ensinou a fazer as perguntas certas e a desconfiar de um número que não conversa com a realidade das pessoas.</p>
+      </div>
+      <div>
+        <span class="label">Dados</span>
+        <h3>Medir para decidir</h3>
+        <p>No RH encontrei o terreno onde as duas coisas se juntam: transformar ponto, folha e cadastro em bases confiáveis e em leituras que orientam decisões.</p>
+      </div>
+    </div>
+    <div class="tools rv">
+      <span class="label">Ferramentas</span>
+      <span class="tag">Power BI</span><span class="tag">Power Apps</span><span class="tag">SQL</span><span class="tag">Python · pandas</span><span class="tag">Azure</span><span class="tag">JavaScript</span><span class="tag">AdvPL · Protheus</span>
+    </div>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <div class="wrap">
+    <div class="sec-title"><h2>Trajetória</h2></div>
+    <div class="rv">
+      <div class="tl-row">
+        <span class="label">Em andamento</span>
+        <div><h4>Especialização em Dados e Tecnologia Aplicada</h4><p>Data Analytics, Machine Learning, SQL e Power Platform.</p></div>
+        <div class="tl-btns"><button class="link-btn" onclick="openModal('m-tech')">Certificados</button></div>
+      </div>
+      <div class="tl-row">
+        <span class="label">Experiência</span>
+        <div><h4>Analista de Recursos Humanos</h4><p>Dados de pessoas, indicadores e rotinas do ciclo do colaborador.</p></div>
+        <div class="tl-btns"><button class="link-btn" onclick="openModal('m-rh')">Registros</button></div>
+      </div>
+      <div class="tl-row">
+        <span class="label">Formação</span>
+        <div><h4>Psicologia</h4><p>CRP · abordagem fenomenológico-existencial.</p></div>
+        <div class="tl-btns">
+          <button class="link-btn" onclick="openModal('m-psi-foto')">Registro</button>
+          <button class="link-btn" onclick="openModal('m-psi-cert')">Certificados</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="ct">
+      <h2>Vamos conversar?</h2>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/victoria-sarti/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© 2026 Victória Caroline Sarti José</span>
+      <span>Dourados, MS</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="overlay" id="m-rh" onclick="closeOv(event,'m-rh')">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-ttl">Analista de RH — Registros</span>
+      <button class="modal-x" onclick="closeModal('m-rh')" aria-label="Fechar">×</button>
+    </div>
+    <div class="car-wrap">
+      <button class="car-btn" onclick="moveC('m-rh',-1)" aria-label="Anterior">&#8249;</button>
+      <div class="car-track" id="ct-m-rh">
+        <div class="car-slide"><img src="./estoure-um-balao.jpg" alt="Setembro Amarelo" loading="lazy"><p class="car-cap">Setembro Amarelo — "Estoure um balão e cumpra a sua missão"</p></div>
+        <div class="car-slide"><img src="./dia-dos-pais.jpg" alt="Dia dos Pais" loading="lazy"><p class="car-cap">Endomarketing — Dia dos Pais</p></div>
+        <div class="car-slide"><img src="./t&amp;d.jpg" alt="Treinamento e Desenvolvimento" loading="lazy"><p class="car-cap">Treinamento e Desenvolvimento — Academia de Líderes</p></div>
+        <div class="car-slide"><img src="./outubr.jpg" alt="Outubro Rosa" loading="lazy"><p class="car-cap">Outubro Rosa — Palestra sobre saúde da mulher</p></div>
+        <div class="car-slide"><img src="./fortalecimento-de-vinculos.jpg" alt="Fortalecimento de Vínculos" loading="lazy"><p class="car-cap">Fortalecimento de vínculos entre equipes</p></div>
+      </div>
+      <button class="car-btn" onclick="moveC('m-rh',1)" aria-label="Próximo">&#8250;</button>
+    </div>
+    <div class="dots" id="cd-m-rh">
+      <span class="dot on" onclick="goTo('m-rh',0)"></span><span class="dot" onclick="goTo('m-rh',1)"></span><span class="dot" onclick="goTo('m-rh',2)"></span><span class="dot" onclick="goTo('m-rh',3)"></span><span class="dot" onclick="goTo('m-rh',4)"></span>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="m-tech" onclick="closeOv(event,'m-tech')">
+  <div class="modal wide">
+    <div class="modal-head"><span class="modal-ttl">Tecnologia — Certificados</span><button class="modal-x" onclick="closeModal('m-tech')" aria-label="Fechar">×</button></div>
+    <div class="pdf-wrap"><iframe data-src="./ti.pdf#zoom=100" title="Certificados de Tecnologia"></iframe></div>
+    <a href="./ti.pdf" class="pdf-btn" target="_blank" rel="noopener">Abrir em nova aba ↗</a>
+  </div>
+</div>
+
+<div class="overlay" id="m-psi-foto" onclick="closeOv(event,'m-psi-foto')">
+  <div class="modal wide">
+    <div class="modal-head"><span class="modal-ttl">Psicologia — Registro profissional</span><button class="modal-x" onclick="closeModal('m-psi-foto')" aria-label="Fechar">×</button></div>
+    <div class="car-track" id="ct-m-psi-foto"><div class="car-slide"><img src="./acolhimento.jfif" alt="Registro profissional" class="img-contain" loading="lazy"></div></div>
+  </div>
+</div>
+
+<div class="overlay" id="m-psi-cert" onclick="closeOv(event,'m-psi-cert')">
+  <div class="modal wide">
+    <div class="modal-head"><span class="modal-ttl">Psicologia — Certificados</span><button class="modal-x" onclick="closeModal('m-psi-cert')" aria-label="Fechar">×</button></div>
+    <div class="pdf-wrap"><iframe data-src="./psi.pdf#zoom=100" title="Certificados de Psicologia"></iframe></div>
+    <a href="./psi.pdf" class="pdf-btn" target="_blank" rel="noopener">Abrir em nova aba ↗</a>
+  </div>
+</div>
+
+<div class="lb" id="lb" onclick="closeLb(event)">
+  <div class="lb-box">
+    <button class="lb-close" onclick="closeLb()" aria-label="Fechar">×</button>
+    <img id="lb-img" src="" alt="">
+    <p class="lb-cap" id="lb-cap"></p>
+  </div>
+</div>
+
+<div class="lb" id="vid-modal" onclick="closeVid(event)">
+  <div class="lb-box">
+    <button class="lb-close" onclick="closeVid()" aria-label="Fechar">×</button>
+    <video id="vid-el" controls preload="none"><source src="vicvid.mp4" type="video/mp4"></video>
+  </div>
+</div>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.media[role=button]').forEach(m => m.addEventListener('keydown', e => { if (e.key === 'Enter') m.click(); }));
+
+  const slideAt = {};
+  function openModal(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const iframe = el.querySelector('iframe[data-src]');
+    if (iframe && !iframe.src) iframe.src = iframe.dataset.src;
+    el.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    slideAt[id] = 0; updateC(id);
+  }
+  function closeModal(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('on');
+    document.body.style.overflow = '';
+    const iframe = el.querySelector('iframe');
+    if (iframe) iframe.removeAttribute('src');
+  }
+  function closeOv(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
+  function moveC(id, dir) {
+    const t = document.getElementById('ct-' + id);
+    if (!t) return;
+    slideAt[id] = ((slideAt[id] || 0) + dir + t.children.length) % t.children.length;
+    updateC(id);
+  }
+  function goTo(id, i) { slideAt[id] = i; updateC(id); }
+  function updateC(id) {
+    const t = document.getElementById('ct-' + id);
+    if (!t) return;
+    const i = slideAt[id] || 0;
+    t.scrollLeft = t.offsetWidth * i;
+    document.querySelectorAll('#cd-' + id + ' .dot').forEach((d, k) => d.classList.toggle('on', k === i));
+  }
+
+  function openLbSrc(src, alt) {
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb-img').alt = alt;
+    document.getElementById('lb-cap').textContent = alt;
+    document.getElementById('lb').classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function openLb(img) { openLbSrc(img.src, img.alt); }
+  function closeLb(e) {
+    if (e && e.target !== document.getElementById('lb')) return;
+    document.getElementById('lb').classList.remove('on');
+    document.body.style.overflow = '';
+  }
+  function openVid() {
+    document.getElementById('vid-modal').classList.add('on');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('vid-el').play();
+  }
+  function closeVid(e) {
+    const m = document.getElementById('vid-modal');
+    if (e && e.target !== m) return;
+    m.classList.remove('on');
+    document.body.style.overflow = '';
+    document.getElementById('vid-el').pause();
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.overlay.on, .lb.on').forEach(el => {
+      el.classList.remove('on');
+      const iframe = el.querySelector('iframe'); if (iframe) iframe.removeAttribute('src');
+      const vid = el.querySelector('video'); if (vid) vid.pause();
+    });
+    document.body.style.overflow = '';
+  });
+</script>
+</body>
+</html>
