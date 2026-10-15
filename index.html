@@ -94,6 +94,14 @@
     .mini .links a { font-size: .82rem; }
 
     /* sobre */
+    #github { padding-bottom: clamp(3.5rem, 8vw, 6rem); }
+    .gh { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    .gh-num { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: clamp(2.6rem, 5vw, 3.6rem); letter-spacing: -.03em; line-height: 1; }
+    .gh-cap { font-size: .95rem; color: var(--text); margin: .4rem 0 1rem; }
+    .gh p { font-size: .9rem; color: var(--muted); max-width: 36ch; }
+    .gh-graph { display: block; background: #0D1117; border-radius: 12px; padding: clamp(.6rem, 2vw, 1.2rem); border: 1px solid var(--line); box-shadow: 0 24px 48px -28px rgba(17,19,23,.35); overflow-x: auto; }
+    .gh-graph img { width: 100%; min-width: 520px; }
+    .gh-link:hover { color: var(--ink); }
     #sobre { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(3.5rem, 8vw, 6rem) 0; }
     .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); }
     .about h3 { font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1.3rem; letter-spacing: -.015em; margin: .5rem 0 .7rem; }
@@ -157,10 +165,12 @@
       .photo { order: -1; width: 128px; border-radius: 50%; aspect-ratio: 1; }
       .proj, .proj.flip { grid-template-columns: 1fr; }
       .proj.flip .media-col { order: 0; }
-      .more, .about { grid-template-columns: 1fr; }
+      .more, .about, .gh { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       nav { gap: 1.1rem; }
+      nav .hide-sm { display: none; }
+      .brand { white-space: nowrap; }
       .mini { grid-template-columns: 1fr; }
       .mini img { width: 100%; }
       .tl-row { grid-template-columns: 1fr; gap: .3rem; }
@@ -180,6 +190,7 @@
     <a href="#" class="brand">Victória Sarti</a>
     <nav>
       <a href="#projetos">Projetos</a>
+      <a href="#github" class="hide-sm">GitHub</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -215,10 +226,10 @@
         </div>
       </div>
       <div>
-        <span class="label">01 · Business case</span>
-        <h3>Power BI integrado ao Power Apps</h3>
-        <p>Um caso de negócio de ponta a ponta: o app captura o dado, o relatório responde à pergunta.</p>
-        <div class="tags"><span class="tag">Power BI</span><span class="tag">Power Apps</span><span class="tag">DAX</span><span class="tag">Power Platform</span></div>
+        <span class="label">01 · Business case · Power Platform</span>
+        <h3>Meus projetos dentro de um app</h3>
+        <p>Um app em Power Apps que funciona como vitrine dos meus projetos, com os relatórios em Power BI rodando dentro dele, do jeito que alguém usaria no dia a dia.</p>
+        <div class="tags"><span class="tag">Power Apps</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Platform</span></div>
       </div>
     </article>
 
@@ -281,6 +292,22 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="github">
+  <div class="wrap">
+    <div class="sec-title"><h2>GitHub</h2><a class="label gh-link" href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">github.com/VictoriaCaroline ↗</a></div>
+    <div class="gh rv">
+      <div>
+        <div class="gh-num">157</div>
+        <div class="gh-cap">contribuições no último ano</div>
+        <p>A maior parte do meu código fica em repositórios privados, porque envolve dados de empresas. O gráfico mostra o ritmo de trabalho.</p>
+      </div>
+      <a class="gh-graph" href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener" aria-label="Abrir perfil no GitHub">
+        <img src="assets/github-atividade.png" alt="Gráfico de contribuições no GitHub: 157 no último ano" loading="lazy">
+      </a>
     </div>
   </div>
 </section>
