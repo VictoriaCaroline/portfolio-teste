@@ -177,7 +177,7 @@
     .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s, opacity .25s; }
     .card:hover { border-color: var(--line-2); transform: translateY(-3px); }
     .card.wide { grid-column: span 2; display: grid; grid-template-columns: 1.4fr 1fr; }
-    .card.hidden { display: none; }
+    .card.hidden, .others-head.hidden { display: none; }
     .card.dim { opacity: .28; }
     .card.glow { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
     .shot { position: relative; background: #0d0f13; aspect-ratio: 16 / 10; overflow: hidden; cursor: zoom-in; border-bottom: 1px solid var(--line); }
@@ -201,6 +201,20 @@
     .lock svg { width: 12px; height: 12px; }
     .link-arrow { font-size: .82rem; color: var(--text); display: inline-flex; align-items: center; gap: .3rem; border-bottom: 1px solid var(--line-2); cursor: pointer; background: none; border-top: 0; border-left: 0; border-right: 0; padding: 0 0 1px; }
     .link-arrow:hover { border-color: var(--text); }
+    .others-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 2.6rem 0 1rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+    .others-head h3 { font-size: 1.3rem; letter-spacing: -.02em; }
+    .others-head span { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .card.site { color: inherit; }
+    .card.site .body { padding: 1.1rem 1.1rem 1rem; }
+    .card.site h3 { font-size: 1.1rem; }
+    .preview { border-bottom: 1px solid var(--line); background: var(--bg-2); }
+    .preview .bar { display: flex; align-items: center; gap: .35rem; padding: .45rem .7rem; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: .66rem; color: var(--muted); }
+    .preview .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-2); }
+    .preview .bar span { margin-left: .35rem; }
+    .preview .frame { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: linear-gradient(135deg, var(--card-2), var(--bg-2)); }
+    .preview .frame::before { content: 'carregando prévia…'; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: .72rem; color: var(--dim); }
+    .preview iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0; transform-origin: 0 0; pointer-events: none; background: transparent; }
     .others { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.4rem; font-size: .85rem; color: var(--muted); }
     .others a { color: var(--text); border-bottom: 1px solid var(--line-2); }
 
@@ -284,7 +298,9 @@
       .card.wide { grid-column: span 2; grid-template-columns: 1fr; }
       .card.wide .shot { aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
     }
+    @media (max-width: 1000px) { .grid3 { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 760px) {
+      .grid3 { grid-template-columns: 1fr; }
       nav.main { display: none; }
       .menu-btn { display: grid; }
       .grid { grid-template-columns: 1fr; }
@@ -454,6 +470,7 @@
       <button class="tab" data-f="pa" role="tab" aria-selected="false">People Analytics</button>
       <button class="tab" data-f="web" role="tab" aria-selected="false">Aplicações Azure</button>
       <button class="tab" data-f="erp" role="tab" aria-selected="false">ERP</button>
+      <button class="tab" data-f="site" role="tab" aria-selected="false">Web &amp; criação</button>
     </div>
 
     <div class="grid">
@@ -534,11 +551,42 @@
       </article>
     </div>
 
-    <p class="others rv">Outros trabalhos:
-      <a href="https://orange-ocean-07cb72f10.7.azurestaticapps.net/" target="_blank" rel="noopener">website ↗</a>
-      <a href="https://agreeable-forest-092c02110.7.azurestaticapps.net/" target="_blank" rel="noopener">linktree ↗</a>
-      <a href="https://ambitious-pebble-045775e10.7.azurestaticapps.net/" target="_blank" rel="noopener">catálogo 3D ↗</a>
-    </p>
+    <div class="others-head rv">
+      <h3>Outros trabalhos</h3>
+      <span>Web e criação · no ar</span>
+    </div>
+    <div class="grid3 rv">
+      <a class="card site" href="https://orange-ocean-07cb72f10.7.azurestaticapps.net/" target="_blank" rel="noopener" data-cat="site" data-stack="HTML,CSS,JavaScript,Static Web Apps">
+        <div class="preview"><div class="bar"><i></i><i></i><i></i><span>website</span></div><div class="frame"><iframe src="https://orange-ocean-07cb72f10.7.azurestaticapps.net/" loading="lazy" tabindex="-1" title="Prévia do website" aria-hidden="true"></iframe></div></div>
+        <div class="body">
+          <div class="meta"><span>Web · site profissional</span><span class="status">no ar</span></div>
+          <h3>Website profissional</h3>
+          <p>Site responsivo para profissional, com foco em identidade visual e contato.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+          <div class="card-foot"><span class="link-arrow">Abrir site ↗</span></div>
+        </div>
+      </a>
+      <a class="card site" href="https://agreeable-forest-092c02110.7.azurestaticapps.net/" target="_blank" rel="noopener" data-cat="site" data-stack="HTML,CSS,JavaScript,Static Web Apps">
+        <div class="preview"><div class="bar"><i></i><i></i><i></i><span>linktree</span></div><div class="frame"><iframe src="https://agreeable-forest-092c02110.7.azurestaticapps.net/" loading="lazy" tabindex="-1" title="Prévia do linktree" aria-hidden="true"></iframe></div></div>
+        <div class="body">
+          <div class="meta"><span>Web · página de links</span><span class="status">no ar</span></div>
+          <h3>Linktree personalizado</h3>
+          <p>Página única de links com identidade própria, feita do zero no lugar de ferramentas prontas.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Azure</span></div>
+          <div class="card-foot"><span class="link-arrow">Abrir página ↗</span></div>
+        </div>
+      </a>
+      <a class="card site" href="https://ambitious-pebble-045775e10.7.azurestaticapps.net/" target="_blank" rel="noopener" data-cat="site" data-stack="HTML,CSS,JavaScript,Static Web Apps">
+        <div class="preview"><div class="bar"><i></i><i></i><i></i><span>catálogo 3D</span></div><div class="frame"><iframe src="https://ambitious-pebble-045775e10.7.azurestaticapps.net/" loading="lazy" tabindex="-1" title="Prévia do catálogo 3D" aria-hidden="true"></iframe></div></div>
+        <div class="body">
+          <div class="meta"><span>Criação · impressão 3D</span><span class="status">no ar</span></div>
+          <h3>Catálogo de peças 3D</h3>
+          <p>Catálogo de materiais pedagógicos, jogos e peças modeladas e impressas em 3D.</p>
+          <div class="chips"><span class="chip">Modelagem 3D</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+          <div class="card-foot"><span class="link-arrow">Ver catálogo ↗</span></div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -707,12 +755,18 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
+  /* prévia dos sites: escala o iframe para caber no card */
+  const fitFrames = () => document.querySelectorAll('.preview .frame').forEach(fr => { const f = fr.querySelector('iframe'); f.style.transform = `scale(${fr.clientWidth / 1280})`; });
+  fitFrames(); addEventListener('resize', fitFrames);
+
   /* filtro de projetos */
   const cards = [...document.querySelectorAll('.card')];
   document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => { x.classList.toggle('on', x === t); x.setAttribute('aria-selected', x === t); });
     const f = t.dataset.f;
     cards.forEach(c => c.classList.toggle('hidden', f !== 'all' && !c.dataset.cat.split(' ').includes(f)));
+    document.querySelector('.others-head').classList.toggle('hidden', f !== 'all' && f !== 'site');
+    requestAnimationFrame(fitFrames);
   }));
 
   /* stack: onde foi usada */
