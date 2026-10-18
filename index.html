@@ -205,12 +205,12 @@
     .others a { color: var(--text); border-bottom: 1px solid var(--line-2); }
 
     /* github */
-    .gh { display: grid; grid-template-columns: .8fr 2fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    .gh { display: grid; grid-template-columns: .6fr 2.4fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
     .gh-num { font-size: clamp(2.6rem, 5vw, 3.8rem); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
     .gh-num + span { display: block; color: var(--text); margin: .4rem 0 .8rem; }
     .gh p { font-size: .9rem; color: var(--muted); max-width: 34ch; }
-    .gh-graph { display: block; background: #0D1117; border: 1px solid var(--line); border-radius: var(--r); padding: clamp(.6rem, 2vw, 1.1rem); overflow-x: auto; box-shadow: var(--shadow); }
-    .gh-graph img { width: 100%; min-width: 540px; }
+    .gh-graph { display: block; background: #0D1117; padding: 0 !important; border: 1px solid var(--line); border-radius: var(--r); padding: clamp(.6rem, 2vw, 1.1rem); overflow-x: auto; box-shadow: var(--shadow); }
+    .gh-graph img { width: 100%; min-width: 600px; border-radius: 8px; }
 
     /* formação */
     .certs { border-top: 1px solid var(--line); }
@@ -472,7 +472,7 @@
         </div>
       </article>
 
-      <article class="card rv" data-cat="pa web" data-stack="Azure,Azure Functions,Static Web Apps,Table Storage,SQL,Python,pandas,JavaScript,LGPD">
+      <article class="card rv" data-cat="pa web" data-stack="Azure Functions,Static Web Apps,Table Storage,Azure SQL,Container Apps,Containers,Docker,SQL,Python,FastAPI,pandas,JavaScript,HTML,CSS,Node.js,Chart.js,Git,LGPD">
         <div class="shot" role="button" tabindex="0" data-vid="assets/proj-doma.mp4" data-vid-title="Hefesto&amp;RH · People Analytics" aria-label="Assistir ao vídeo do Hefesto&RH">
           <video autoplay muted loop playsinline preload="metadata" poster="assets/proj-doma-poster.jpg"><source src="assets/proj-doma.mp4" type="video/mp4"></video>
           <span class="badge">▶ vídeo · nomes ocultos</span>
@@ -490,7 +490,7 @@
         </div>
       </article>
 
-      <article class="card rv" data-cat="web" data-stack="Azure,Azure Functions,Static Web Apps,Table Storage,JavaScript,LGPD">
+      <article class="card rv" data-cat="web" data-stack="Azure Functions,Static Web Apps,Table Storage,JavaScript,HTML,CSS,Node.js,Git,LGPD">
         <div class="shot" role="button" tabindex="0" data-vid="assets/proj-epi.mp4" data-vid-title="Portal de EPI e Uniformes" aria-label="Assistir ao vídeo do Portal de EPI">
           <video autoplay muted loop playsinline preload="metadata" poster="assets/proj-epi-poster.jpg"><source src="assets/proj-epi.mp4" type="video/mp4"></video>
           <span class="badge">▶ vídeo · nomes ocultos</span>
@@ -507,7 +507,7 @@
         </div>
       </article>
 
-      <article class="card wide rv" data-cat="pa" data-stack="JavaScript,LGPD">
+      <article class="card wide rv" data-cat="pa" data-stack="JavaScript,HTML,CSS,LGPD">
         <div class="shot" role="button" tabindex="0" data-vid="assets/proj-clima.mp4" data-vid-title="Pesquisa de Clima Organizacional" aria-label="Assistir ao vídeo da Pesquisa de Clima">
           <video autoplay muted loop playsinline preload="metadata" poster="assets/proj-clima-poster.jpg"><source src="assets/proj-clima.mp4" type="video/mp4"></video>
           <span class="badge">▶ vídeo · respostas agregadas</span>
@@ -557,7 +557,7 @@
         <div class="cta"><a class="btn" href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">Ver perfil ↗</a></div>
       </div>
       <a class="gh-graph" href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener" aria-label="Abrir perfil no GitHub">
-        <img src="assets/github-atividade.png" alt="Gráfico de contribuições no GitHub: 157 no último ano" loading="lazy">
+        <img src="assets/github-perfil.png" alt="Perfil de Victória no GitHub com 157 contribuições no último ano" loading="lazy">
       </a>
     </div>
   </div>
@@ -581,11 +581,6 @@
         <div><h4>Psicologia</h4><p>CRP · abordagem fenomenológico-existencial</p></div>
         <div class="acts"><button class="sbtn" data-modal="m-psi-foto">Registro</button><button class="sbtn" data-modal="m-psi-cert">Certificados</button></div>
       </div>
-      <div class="cert">
-        <span class="when">rh</span>
-        <div><h4>Ações com pessoas</h4><p>Endomarketing, T&amp;D e saúde mental no trabalho</p></div>
-        <div class="acts"><button class="sbtn" data-gallery="rh">Ver registros</button></div>
-      </div>
     </div>
   </div>
 </section>
@@ -600,9 +595,9 @@
     </div>
     <div class="stack rv">
       <div class="stack-col"><h4>Power Platform</h4><div class="chips"><span class="chip" data-t="Power BI">Power BI</span><span class="chip" data-t="DAX">DAX</span><span class="chip" data-t="Power Apps">Power Apps</span></div></div>
-      <div class="stack-col"><h4>Dados</h4><div class="chips"><span class="chip" data-t="SQL">SQL</span><span class="chip" data-t="Python">Python</span><span class="chip" data-t="pandas">pandas</span><span class="chip" data-t="LGPD">LGPD</span></div></div>
-      <div class="stack-col"><h4>Azure</h4><div class="chips"><span class="chip" data-t="Static Web Apps">Static Web Apps</span><span class="chip" data-t="Azure Functions">Functions</span><span class="chip" data-t="Table Storage">Table Storage</span></div></div>
-      <div class="stack-col"><h4>Desenvolvimento</h4><div class="chips"><span class="chip" data-t="JavaScript">JavaScript</span><span class="chip" data-t="AdvPL">AdvPL</span><span class="chip" data-t="TOTVS Protheus">Protheus</span></div></div>
+      <div class="stack-col"><h4>Dados</h4><div class="chips"><span class="chip" data-t="SQL">SQL</span><span class="chip" data-t="Azure SQL">Azure SQL</span><span class="chip" data-t="pandas">pandas</span><span class="chip" data-t="LGPD">LGPD</span></div></div>
+      <div class="stack-col"><h4>Azure &amp; Infra</h4><div class="chips"><span class="chip" data-t="Static Web Apps">Static Web Apps</span><span class="chip" data-t="Azure Functions">Functions</span><span class="chip" data-t="Table Storage">Table Storage</span><span class="chip" data-t="Container Apps">Container Apps</span><span class="chip" data-t="Containers">Containers</span><span class="chip" data-t="Docker">Docker</span><span class="chip" data-t="WSL">WSL (Linux no Windows)</span></div></div>
+      <div class="stack-col"><h4>Desenvolvimento</h4><div class="chips"><span class="chip" data-t="HTML">HTML</span><span class="chip" data-t="CSS">CSS</span><span class="chip" data-t="JavaScript">JavaScript</span><span class="chip" data-t="Node.js">Node.js</span><span class="chip" data-t="Python">Python</span><span class="chip" data-t="FastAPI">FastAPI</span><span class="chip" data-t="pandas">pandas</span><span class="chip" data-t="Chart.js">Chart.js</span><span class="chip" data-t="AdvPL">AdvPL</span><span class="chip" data-t="TOTVS Protheus">Protheus</span><span class="chip" data-t="Git">Git</span></div></div>
     </div>
     <p class="stack-hint" id="stackHint" aria-live="polite"></p>
   </div>
@@ -727,7 +722,7 @@
       const t = ch.dataset.t;
       const used = cards.filter(c => c.dataset.stack.split(',').includes(t));
       cards.forEach(c => { c.classList.toggle('glow', used.includes(c)); c.classList.toggle('dim', !used.includes(c)); });
-      hint.innerHTML = used.length ? `<b>${t}</b> → ${used.map(c => c.querySelector('h3').textContent).join(' · ')}` : '';
+      hint.innerHTML = used.length ? `<b>${t}</b> → ${used.map(c => c.querySelector('h3').textContent).join(' · ')}` : (t === 'WSL' ? '<b>WSL</b> → ambiente de desenvolvimento' : '');
     };
     const off = () => { cards.forEach(c => c.classList.remove('glow', 'dim')); hint.textContent = ''; };
     ch.addEventListener('mouseenter', on); ch.addEventListener('mouseleave', off);
@@ -766,8 +761,7 @@
   const GAL = {
     doma: ['Hefesto&RH', [['assets/proj-doma-resumo.jpg', 'Resumo: vencimentos, jornada e evolução do quadro'], ['assets/proj-doma-jornada.jpg', 'Jornada: infrações de intra e interjornada'], ['assets/proj-doma-venc.jpg', 'Vencimentos de experiência, ASO e CNH']]],
     epi: ['Portal de EPI e Uniformes', [['assets/proj-epi.jpg', 'Painel por colaborador']]],
-    erp: ['Importador TOTVS Protheus', [['./totvs.importador.jpg', 'Importador de dados']]],
-    rh: ['Ações com pessoas', [['./estoure-um-balao.jpg', 'Setembro Amarelo'], ['./dia-dos-pais.jpg', 'Endomarketing — Dia dos Pais'], ['./t&d.jpg', 'Treinamento e Desenvolvimento — Academia de Líderes'], ['./outubr.jpg', 'Outubro Rosa — saúde da mulher'], ['./fortalecimento-de-vinculos.jpg', 'Fortalecimento de vínculos entre equipes']]]
+    erp: ['Importador TOTVS Protheus', [['./totvs.importador.jpg', 'Importador de dados']]]
   };
   const track = document.getElementById('galTrack'), cap = document.getElementById('galCap'), dots = document.getElementById('galDots');
   let gi = 0, gl = [];
@@ -803,7 +797,7 @@
     help: 'comandos disponíveis:\n  sobre      quem sou\n  projetos   o que construí\n  stack      ferramentas\n  contato    onde me encontrar\n  clear      limpa a tela',
     sobre: 'psicóloga. trabalho com dados de pessoas:\nmodelagem, ETL, aplicações e painéis.\nescuto antes de concluir — inclusive os números.',
     projetos: ' id | projeto                      | status\n----+------------------------------+-------------\n  1 | app de projetos (Power Apps) | demo\n  2 | Hefesto&RH people analytics  | em produção\n  3 | portal de EPI e uniformes    | em produção\n  4 | pesquisa de clima            | painel\n  5 | importador TOTVS Protheus    | erp\n(5 linhas)',
-    stack: ' categoria       | ferramentas\n-----------------+--------------------------------\n power platform  | Power BI, DAX, Power Apps\n dados           | SQL, Python, pandas, LGPD\n azure           | Static Web Apps, Functions, Table Storage\n desenvolvimento | JavaScript, AdvPL, Protheus',
+    stack: ' categoria       | ferramentas\n-----------------+--------------------------------\n power platform  | Power BI, DAX, Power Apps\n dados           | SQL, Azure SQL, pandas, LGPD\n azure & infra   | Static Web Apps, Functions, Container Apps, Docker, WSL\n desenvolvimento | HTML, CSS, JavaScript, Node.js, Python, AdvPL',
     contato: 'linkedin → <a href="https://www.linkedin.com/in/victoria-sarti/" target="_blank" rel="noopener">linkedin.com/in/victoria-sarti</a>\ngithub   → <a href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">github.com/VictoriaCaroline</a>'
   };
   const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
