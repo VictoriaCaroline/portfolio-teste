@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Victória Sarti — Psicologia e Dados</title>
-  <meta name="description" content="Psicóloga que trabalha com dados: People Analytics, Power Platform, Azure, SQL e Python.">
+  <meta name="description" content="Psicóloga que trabalha com dados: People Analytics, Power Platform, Azure, SQL e Python. Dourados, MS.">
   <meta name="author" content="Victória Caroline Sarti José">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0A0A0C">
@@ -360,7 +360,7 @@
       <div>
         <div class="who">
           <div class="avatar"><img src="vic.png" alt="Foto de Victória Sarti"></div>
-          <div><b>Victória Sarti</b><span>psicóloga · dados · </span></div>
+          <div><b>Victória Sarti</b><span>psicóloga · dados · dourados, ms</span></div>
         </div>
         <h1>Sou movida pela <em>curiosidade</em>.</h1>
         <p class="lead">Acredito que o ser humano é multidimensional e que entender essas dimensões é a base de tudo. Uso a Psicologia e a Tecnologia para potencializar esse olhar, combinando sensibilidade humana, análise de dados e automação para construir soluções eficientes.</p>
@@ -374,27 +374,17 @@
         <p class="keywords"><span>people analytics</span> · <span>power platform</span> · <span>azure</span> · <span>sql</span> · <span>python</span></p>
       </div>
 
-      <div class="stage" aria-hidden="true">
-        <div class="panel">
-          <div class="panel-bar"><i></i><i></i><i></i><span>hefesto&amp;rh · modelo de dados</span></div>
-          <div class="er">
-            <div class="tbl"><b>colaboradores</b><div class="pk">id <em>pk</em></div><div>matricula</div><div>setor</div><div>admissao</div></div>
-            <div class="tbl"><b>ponto</b><div class="pk">mes <em>pk</em></div><div>colaborador_id <em>fk</em></div><div>data</div><div>m1 … m4</div></div>
-            <div class="tbl"><b>parametros</b><div class="pk">chave <em>pk</em></div><div>intra_min</div><div>inter_min</div><div>regime</div></div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-bar"><i></i><i></i><i></i><span>pipeline · ponto → indicador</span></div>
-          <div class="pipe">
-            <span class="node">planilhas · ERP</span><span class="arrow"></span>
-            <span class="node">staging</span><span class="arrow"></span>
-            <span class="node">validação</span><span class="arrow"></span>
-            <span class="node">Azure</span><span class="arrow"></span>
-            <span class="node hl">painel</span>
-          </div>
-        </div>
-        <p class="stage-cap">Estrutura simplificada de um dos projetos abaixo.</p>
+      <div class="term" aria-label="Terminal interativo">
+      <div class="panel-bar"><i></i><i></i><i></i><span>vic@portfolio — psql</span></div>
+      <div class="term-out" id="termOut"></div>
+      <form class="term-in" id="termForm" autocomplete="off">
+        <label for="termIn">vic=#</label>
+        <input id="termIn" type="text" spellcheck="false" placeholder="digite help" aria-label="Comando">
+      </form>
+      <div class="term-cmds">
+        <button data-cmd="help">help</button><button data-cmd="sobre">sobre</button><button data-cmd="projetos">projetos</button><button data-cmd="stack">stack</button><button data-cmd="contato">contato</button><button data-cmd="clear">clear</button>
       </div>
+    </div>
     </div>
   </div>
 
@@ -662,17 +652,27 @@
         <a class="btn" href="https://github.com/VictoriaCaroline" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
-    <div class="term rv" aria-label="Terminal interativo">
-      <div class="panel-bar"><i></i><i></i><i></i><span>vic@portfolio — psql</span></div>
-      <div class="term-out" id="termOut"></div>
-      <form class="term-in" id="termForm" autocomplete="off">
-        <label for="termIn">vic=#</label>
-        <input id="termIn" type="text" spellcheck="false" placeholder="digite help" aria-label="Comando">
-      </form>
-      <div class="term-cmds">
-        <button data-cmd="help">help</button><button data-cmd="sobre">sobre</button><button data-cmd="projetos">projetos</button><button data-cmd="stack">stack</button><button data-cmd="contato">contato</button><button data-cmd="clear">clear</button>
+    <div class="stage rv" aria-hidden="true">
+        <div class="panel">
+          <div class="panel-bar"><i></i><i></i><i></i><span>hefesto&amp;rh · modelo de dados</span></div>
+          <div class="er">
+            <div class="tbl"><b>colaboradores</b><div class="pk">id <em>pk</em></div><div>matricula</div><div>setor</div><div>admissao</div></div>
+            <div class="tbl"><b>ponto</b><div class="pk">mes <em>pk</em></div><div>colaborador_id <em>fk</em></div><div>data</div><div>m1 … m4</div></div>
+            <div class="tbl"><b>parametros</b><div class="pk">chave <em>pk</em></div><div>intra_min</div><div>inter_min</div><div>regime</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-bar"><i></i><i></i><i></i><span>pipeline · ponto → indicador</span></div>
+          <div class="pipe">
+            <span class="node">planilhas · ERP</span><span class="arrow"></span>
+            <span class="node">staging</span><span class="arrow"></span>
+            <span class="node">validação</span><span class="arrow"></span>
+            <span class="node">Azure</span><span class="arrow"></span>
+            <span class="node hl">painel</span>
+          </div>
+        </div>
+        <p class="stage-cap">Estrutura simplificada do Hefesto&amp;RH, um dos projetos acima.</p>
       </div>
-    </div>
   </div>
 </section>
 
@@ -680,7 +680,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Victória Caroline Sarti José · </span>
+    <span>© 2026 Victória Caroline Sarti José · Dourados, MS</span>
     <span class="mono">psicologia × dados</span>
   </div>
 </footer>
@@ -864,6 +864,7 @@
     out.scrollTop = out.scrollHeight;
   }
   out.innerHTML = '<span class="c">-- portfólio interativo. clique num comando ou digite help.</span>\n\n';
+  run('sobre');
   document.getElementById('termForm').addEventListener('submit', e => { e.preventDefault(); run(inp.value); inp.value = ''; });
   document.querySelectorAll('.term-cmds button').forEach(b => b.addEventListener('click', () => run(b.dataset.cmd)));
 </script>
